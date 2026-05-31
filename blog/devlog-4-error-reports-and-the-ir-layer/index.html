@@ -73,7 +73,7 @@
   <p>It has been a few weeks again and I finally integrated my CaraReport library into the compiler.</p>
 <h2 id="progress-on-error-reports"><a class="heading-anchor" href="#progress-on-error-reports" aria-label="Link to section Progress on error reports">Progress on error reports</a> <a class="blog-anchor" href="#progress-on-error-reports" aria-label="Copy link to section Progress on error reports">#</a></h2>
 <p>The first thing I worked on since the last blog post was replacing the diagnostic TODOs in the lexer with nice error reports. The next step after that was adding diagnostics to the parser, most of the diagnostics here are for unexpected tokens. The biggest chunk of the work happened in the type checker where I added 40+ diagnostics.</p>
-<p><img src="../../assets/error-reports-preview.png" alt="Diagnostics" /></p>
+<p><img src="../../assets/error-reports-example1.png" alt="Diagnostics" /></p>
 <p>I also realized i was handling annotations mostly in the parser because I didnt have a type checker at the time when I added them to the language. So I had to do some restructuring of the code to clean it up a bit.</p>
 <p>A test suite for the diagnostics output was also added to make sure stuff works like expected, it currently covers 65 cases.</p>
 <p><img src="../../assets/diagnostics-test-result.png" alt="Diagnostics Test Result" /></p>

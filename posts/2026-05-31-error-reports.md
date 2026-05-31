@@ -11,7 +11,7 @@ It has been a few weeks again and I finally integrated my CaraReport library int
 ## Progress on error reports
 
 The first thing I worked on since the last blog post was replacing the diagnostic TODOs in the lexer with nice error reports. The next step after that was adding diagnostics to the parser, most of the diagnostics here are for unexpected tokens. The biggest chunk of the work happened in the type checker where I added 40+ diagnostics.
-<img src="../../assets/error-reports-preview.png" alt="Diagnostics" />
+<img src="../../assets/error-reports-example1.png" alt="Diagnostics" />
 
 I also realized i was handling annotations mostly in the parser because I didnt have a type checker at the time when I added them to the language. So I had to do some restructuring of the code to clean it up a bit.
 A test suite for the diagnostics output was also added to make sure stuff works like expected, it currently covers 65 cases.
