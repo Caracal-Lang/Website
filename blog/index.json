@@ -1,5 +1,13 @@
 [
     {
+        "slug":  "devlog-4-error-reports-and-the-ir-layer",
+        "file":  "2026-05-31-error-reports.md",
+        "url":  "https://caracal-lang.org/blog/devlog-4-error-reports-and-the-ir-layer/",
+        "title":  "Devlog #4 Error reports and the IR layer",
+        "date":  "2026-05-31",
+        "description":  "Progress on compiler diagnostics and the new IR layer."
+    },
+    {
         "slug":  "devlog-3-types",
         "file":  "2026-05-03-devlog-3.md",
         "url":  "https://caracal-lang.org/blog/devlog-3-types/",

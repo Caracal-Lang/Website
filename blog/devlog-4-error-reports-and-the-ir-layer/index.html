@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devlog #4 Error reports and the IR layer - Caracal Blog</title>
+    <meta name="description" content="Progress on compiler diagnostics and the new IR layer." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Caracal" />
+    <meta property="og:title" content="Devlog #4 Error reports and the IR layer - Caracal Blog" />
+    <meta property="og:description" content="Progress on compiler diagnostics and the new IR layer." />
+    <meta property="og:url" content="https://caracal-lang.org/blog/devlog-4-error-reports-and-the-ir-layer/" />
+    <meta property="og:image" content="https://caracal-lang.org/assets/error-reports-preview.png" />
+    <meta property="og:image:alt" content="CaraReport diagnostic preview" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Devlog #4 Error reports and the IR layer - Caracal Blog" />
+    <meta name="twitter:description" content="Progress on compiler diagnostics and the new IR layer." />
+    <meta name="twitter:image" content="https://caracal-lang.org/assets/error-reports-preview.png" />
+    <meta name="twitter:image:alt" content="CaraReport diagnostic preview" />
+    <link rel="canonical" href="https://caracal-lang.org/blog/devlog-4-error-reports-and-the-ir-layer/" />
+    <link rel="alternate" type="application/rss+xml" title="Caracal Blog RSS" href="https://caracal-lang.org/blog/feed.xml" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+  <script src="../../preload-theme.js"></script>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="post-page">
+<div class="top-nav">
+  <div class="top-nav-left">
+    <a class="top-nav-logo top-nav-logo-link" href="../../" aria-label="Go to home page">
+      <img src="../../assets/caracal.svg" alt="Caracal Logo" class="top-nav-logo-image" />
+      <span class="top-nav-logo-text">Caracal</span>
+    </a>
+    <div class="top-nav-content">
+    <a href="../../" class="top-nav-link">Home</a>
+    <a href="../../docs/" class="top-nav-link">Docs</a>
+    <a href="../../blog/" class="top-nav-link active">Blog</a>
+    </div>
+  </div>
+  <a class="top-nav-link github-link" href="https://github.com/arminherling/Caracal" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub">
+    <img src="../../assets/github-logo.png" alt="GitHub" />
+    <span>Repo</span>
+  </a>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+    <span class="icon" id="themeIcon">&#9788;</span>
+    <span id="themeLabel">Light</span>
+  </button>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav id="nav">
+  <ul>
+    <li class="mobile-only-link"><a href="../../">Home</a></li>
+    <li class="mobile-only-link"><a href="../../docs/">Docs</a></li>
+    <li><a class="rss-sidebar-link" href="../../blog/feed.xml"><img src="../../assets/rss-icon.svg" alt="" aria-hidden="true" /> <span>RSS Feed</span></a></li>
+    <div class="section-title">Blog</div>
+    <li><a href="../../blog/">All Posts</a></li>
+        <div class="section-title">This Post</div>
+        <li id="postTocLoading"><span class="post-toc-empty">Loading headings...</span></li>
+        <li id="postToc"></li>
+  </ul>
+</nav>
+<main>
+  <p><a href="../../blog/">&larr; Back to blog</a></p>
+  <h1>Devlog #4 Error reports and the IR layer</h1>
+  <p class="post-meta"><time datetime="2026-05-31">2026-05-31</time></p>
+  <article class="blog-content">
+  <p>It has been a few weeks again and I finally integrated my CaraReport library into the compiler.</p>
+<h2 id="progress-on-error-reports"><a class="heading-anchor" href="#progress-on-error-reports" aria-label="Link to section Progress on error reports">Progress on error reports</a> <a class="blog-anchor" href="#progress-on-error-reports" aria-label="Copy link to section Progress on error reports">#</a></h2>
+<p>The first thing I worked on since the last blog post was replacing the diagnostic TODOs in the lexer with nice error reports. The next step after that was adding diagnostics to the parser, most of the diagnostics here are for unexpected tokens. The biggest chunk of the work happened in the type checker where I added 40+ diagnostics.</p>
+<p><img src="../../assets/error-reports-preview.png" alt="Diagnostics" /></p>
+<p>I also realized i was handling annotations mostly in the parser because I didnt have a type checker at the time when I added them to the language. So I had to do some restructuring of the code to clean it up a bit.</p>
+<p>A test suite for the diagnostics output was also added to make sure stuff works like expected, it currently covers 65 cases.</p>
+<p><img src="../../assets/diagnostics-test-result.png" alt="Diagnostics Test Result" /></p>
+<p>There are currently 2 lexer diagnostics, 7 parser diagnostics and 44 type checker diagnostics that i&#39;m handling.</p>
+<p>I&#39;m quite happy with how they turned out so far but there are a few things i want to improve at a later point.</p>
+<h2 id="work-on-the-ir-layer"><a class="heading-anchor" href="#work-on-the-ir-layer" aria-label="Link to section Work on the IR Layer">Work on the IR Layer</a> <a class="blog-anchor" href="#work-on-the-ir-layer" aria-label="Copy link to section Work on the IR Layer">#</a></h2>
+<p>My current task, as mentioned in the last post, is splitting up the current LLVM codegen into a separate IR layer. The first thing i did for that was adding a test suite and some basic classes for instructions and terminators.</p>
+<p>I&#39;m slowly working through the existing test files and lower the type checker result into my own IR layer. Functions with returns were the first thing I started with, external function declarations was also easy because they are basicly the same but only contain the function signature.</p>
+<p>After that was arithmetic and control flow, which is a bit more tricky.</p>
+<p><img src="../../assets/ir-layer-example1.png" alt="IR Example" /></p>
+<p>One of the reasons I wanted a separate IR layer is that the current LLVM codegen doesnt properly handle nested control flow and is not easy to work on. The new IR layer already handles this correctly, at least according to the test results.</p>
+<p>The layer should also allow me to add optimizations in the future or allow for a different target than LLVM.</p>
+<p>The IR test suite is currently passing for roughly 1/4 of my test files so far and I&#39;m making nice progress on it.</p>
+<p><img src="../../assets/ir-test-result-progress.png" alt="IR Test Result" /></p>
+<h2 id="whats-next"><a class="heading-anchor" href="#whats-next" aria-label="Link to section Whats next">Whats next</a> <a class="blog-anchor" href="#whats-next" aria-label="Copy link to section Whats next">#</a></h2>
+<p>The new IR layer needs more work and a new version of the LLVM codegen would be nice too so thats what I&#39;m gonna work on next.</p>
+<p>Armin</p>
+  </article>
+</main>
+<script src="../../highlight.js"></script>
+<script src="../../theme.js"></script>
+<script src="../postToc.js"></script>
+</body>
+</html>
