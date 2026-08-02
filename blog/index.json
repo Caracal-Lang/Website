@@ -1,5 +1,13 @@
 [
     {
+        "slug":  "devlog-5-three-ish-years-of-caracal",
+        "file":  "2026-08-02-three-years.md",
+        "url":  "https://caracal-lang.org/blog/devlog-5-three-ish-years-of-caracal/",
+        "title":  "Devlog #5 Three-ish years of Caracal",
+        "date":  "2026-08-02",
+        "description":  "Caracal turns three-ish"
+    },
+    {
         "slug":  "devlog-4-error-reports-and-the-ir-layer",
         "file":  "2026-05-31-error-reports.md",
         "url":  "https://caracal-lang.org/blog/devlog-4-error-reports-and-the-ir-layer/",

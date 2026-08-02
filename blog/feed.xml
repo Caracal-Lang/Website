@@ -5,8 +5,15 @@
         <link>https://caracal-lang.org/blog/</link>
         <description>Development notes and updates from the Caracal project.</description>
         <language>en-us</language>
-        <lastBuildDate>Sun, 31 May 2026 14:52:12 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Aug 2026 18:28:09 GMT</lastBuildDate>
         <atom:link href="https://caracal-lang.org/blog/feed.xml" rel="self" type="application/rss+xml" />
+        <item>
+            <title>Devlog #5 Three-ish years of Caracal</title>
+            <link>https://caracal-lang.org/blog/devlog-5-three-ish-years-of-caracal/</link>
+            <guid>https://caracal-lang.org/blog/devlog-5-three-ish-years-of-caracal/</guid>
+            <pubDate>Sun, 02 Aug 2026 00:00:00 GMT</pubDate>
+            <description>Caracal turns three-ish</description>
+        </item>
         <item>
             <title>Devlog #4 Error reports and the IR layer</title>
             <link>https://caracal-lang.org/blog/devlog-4-error-reports-and-the-ir-layer/</link>

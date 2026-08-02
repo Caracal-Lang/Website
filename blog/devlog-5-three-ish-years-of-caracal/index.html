@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devlog #5 Three-ish years of Caracal - Caracal Blog</title>
+    <meta name="description" content="Caracal turns three-ish" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Caracal" />
+    <meta property="og:title" content="Devlog #5 Three-ish years of Caracal - Caracal Blog" />
+    <meta property="og:description" content="Caracal turns three-ish" />
+    <meta property="og:url" content="https://caracal-lang.org/blog/devlog-5-three-ish-years-of-caracal/" />
+    <meta property="og:image" content="https://caracal-lang.org/assets/three-years-preview.png" />
+    <meta property="og:image:alt" content="Three-ish years of Caracal" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Devlog #5 Three-ish years of Caracal - Caracal Blog" />
+    <meta name="twitter:description" content="Caracal turns three-ish" />
+    <meta name="twitter:image" content="https://caracal-lang.org/assets/three-years-preview.png" />
+    <meta name="twitter:image:alt" content="Three-ish years of Caracal" />
+    <link rel="canonical" href="https://caracal-lang.org/blog/devlog-5-three-ish-years-of-caracal/" />
+    <link rel="alternate" type="application/rss+xml" title="Caracal Blog RSS" href="https://caracal-lang.org/blog/feed.xml" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+  <script src="../../preload-theme.js"></script>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="post-page">
+<div class="top-nav">
+  <div class="top-nav-left">
+    <a class="top-nav-logo top-nav-logo-link" href="../../" aria-label="Go to home page">
+      <img src="../../assets/caracal.svg" alt="Caracal Logo" class="top-nav-logo-image" />
+      <span class="top-nav-logo-text">Caracal</span>
+    </a>
+    <div class="top-nav-content">
+    <a href="../../" class="top-nav-link">Home</a>
+    <a href="../../docs/" class="top-nav-link">Docs</a>
+    <a href="../../blog/" class="top-nav-link active">Blog</a>
+    </div>
+  </div>
+  <a class="top-nav-link github-link" href="https://github.com/arminherling/Caracal" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub">
+    <img src="../../assets/github-logo.png" alt="GitHub" />
+    <span>Repo</span>
+  </a>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+    <span class="icon" id="themeIcon">&#9788;</span>
+    <span id="themeLabel">Light</span>
+  </button>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav id="nav">
+  <ul>
+    <li class="mobile-only-link"><a href="../../">Home</a></li>
+    <li class="mobile-only-link"><a href="../../docs/">Docs</a></li>
+    <li><a class="rss-sidebar-link" href="../../blog/feed.xml"><img src="../../assets/rss-icon.svg" alt="" aria-hidden="true" /> <span>RSS Feed</span></a></li>
+    <div class="section-title">Blog</div>
+    <li><a href="../../blog/">All Posts</a></li>
+        <div class="section-title">This Post</div>
+        <li id="postTocLoading"><span class="post-toc-empty">Loading headings...</span></li>
+        <li id="postToc"></li>
+  </ul>
+</nav>
+<main>
+  <p><a href="../../blog/">&larr; Back to blog</a></p>
+  <h1>Devlog #5 Three-ish years of Caracal</h1>
+  <p class="post-meta"><time datetime="2026-08-02">2026-08-02</time></p>
+  <article class="blog-content">
+  <h2 id="3-ish-year-anniversary"><a class="heading-anchor" href="#3-ish-year-anniversary" aria-label="Link to section 3-ish year anniversary">3-ish year anniversary</a> <a class="blog-anchor" href="#3-ish-year-anniversary" aria-label="Copy link to section 3-ish year anniversary">#</a></h2>
+<p>The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to <a href="https://www.rpgmakerweb.com/">RPG Maker</a> or <a href="https://godotengine.org">Godot</a>. The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I&#39;m mostly interested in.</p>
+<p>The project was renamed to Aalenien in <a href="https://github.com/arminherling/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069">October 2023</a>. I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.</p>
+<p>The project was officially renamed to Caracal in <a href="https://github.com/arminherling/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85">October 2025</a>. I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.</p>
+<p>The project has roughly 600 commits, 1500 tests and sits at around 23k lines of C++ currently, not counting my test and report libraries.</p>
+<h2 id="finished-ir-layer-and-codegen-rewrite"><a class="heading-anchor" href="#finished-ir-layer-and-codegen-rewrite" aria-label="Link to section Finished IR layer and codegen rewrite">Finished IR layer and codegen rewrite</a> <a class="blog-anchor" href="#finished-ir-layer-and-codegen-rewrite" aria-label="Copy link to section Finished IR layer and codegen rewrite">#</a></h2>
+<p>I finished splitting the old LLVM codegen into the new IR layer since the last blog post. The new IR layer is similar to the LLVM IR, which made the new codegen straightforward to implement.</p>
+<p>One of the main reasons for the rework was my broken codegen for nested control flow, this is fixed now and works. The new IR layer also allowed me to add my own optimization passes after lowering. There is only constant folding and dead code elimination right now but its easily extendable.</p>
+<p>The result of the whole rewrite is that ALL of the current tests pass lowering and codegen.</p>
+<p><img src="../../assets/test-result-august-2026.png" alt="Test Result August 2026" /></p>
+<h2 id="global-init-const"><a class="heading-anchor" href="#global-init-const" aria-label="Link to section Global init const">Global init const</a> <a class="blog-anchor" href="#global-init-const" aria-label="Copy link to section Global init const">#</a></h2>
+<p>I added a few new features to the language, one of them are global init constants. Caracal doesnt support global variables but there might be cases where we want to assign them during startup. The only place where they can be assigned is during the main function. They are immutable after that point.</p>
+<p>One example is that I want to create globals that contain the path to the executable or the program startup time.</p>
+<pre><code class="language-cara">g :: init i32;
+
+def main() i32
+{
+    // g can only be assigned once here
+    g = 7;
+    return readG();
+}
+
+def readG() i32
+{
+    // g cant be changed at this point 
+    return g;
+}</code></pre>
+<h2 id="builtin-types-and-operators"><a class="heading-anchor" href="#builtin-types-and-operators" aria-label="Link to section Builtin types and operators">Builtin types and operators</a> <a class="blog-anchor" href="#builtin-types-and-operators" aria-label="Copy link to section Builtin types and operators">#</a></h2>
+<p>I also changed how builtin types are declared to the compiler. Previously they were hardcoded in C++ but I moved them all to the prelude pass. The definitions in the prelude dictate which operators are available on a type or how many bits integers are for example. If a type definition is lacking declarations for operators then they can&#39;t be used, which is useful for disallowing equality checks on floats for example.</p>
+<p>The prelude currently contains definitions for bool, u8, i8, u16, i16, u32, i32, u64, i64, f32, f64, rawptr and cstring.</p>
+<pre><code class="language-cara">#builtin(kind = float, bits = 32)
+type f32
+{
+    def f32.add(lhs: f32, rhs: f32) f32 {}
+    def f32.subtract(lhs: f32, rhs: f32) f32 {}
+    def f32.multiply(lhs: f32, rhs: f32) f32 {}
+    def f32.divide(lhs: f32, rhs: f32) f32 {}
+
+    def f32.negate(value: f32) f32 {}
+
+    // omit equals/ not equals for floats because they are usually causes of bugs
+    
+    def f32.lessThan(lhs: f32, rhs: f32) bool {}
+    def f32.lessOrEqual(lhs: f32, rhs: f32) bool {}
+    def f32.greaterThan(lhs: f32, rhs: f32) bool {}
+    def f32.greaterOrEqual(lhs: f32, rhs: f32) bool {}
+}</code></pre>
+<p>One thing I decided on is that division should always return a float. If the user wanted integer division, then they have to wrap it in a floor function. I think this makes sense but might get changed in the future if it feels clunky and causes more harm than good.</p>
+<pre><code class="language-cara">#builtin(kind = int, bits = 32, signed = true)
+type i32
+{
+    // ...
+    def i32.divide(lhs: i32, rhs: i32) f32 {}
+    // ...
+}</code></pre>
+<h2 id="bitwise-functions"><a class="heading-anchor" href="#bitwise-functions" aria-label="Link to section Bitwise functions">Bitwise functions</a> <a class="blog-anchor" href="#bitwise-functions" aria-label="Copy link to section Bitwise functions">#</a></h2>
+<p>The type definitions in the prelude also contain static bitwise functions for builtin types. I dont want to add special operators for these because I feel like they arent used as much as other operators. Another nice thing is that I dont have to worry about their precedence if they are functions.</p>
+<pre><code class="language-cara">#builtin(kind = int, bits = 32, signed = true)
+type i32
+{
+    // ...
+    def i32.bitAnd(lhs: i32, rhs: i32) i32 {}
+    def i32.bitOr(lhs: i32, rhs: i32) i32 {}
+    def i32.bitXor(lhs: i32, rhs: i32) i32 {}
+    def i32.bitNot(value: i32) i32 {}
+    def i32.shiftLeft(value: i32, amount: i32) i32 {}
+    def i32.shiftRight(value: i32, amount: i32) i32 {}
+    // ...
+}</code></pre>
+<p>A slightly modified test file shows how to use the bitwise functions here:</p>
+<pre><code class="language-cara">def stuff()
+{
+    bitwiseAnd        := i32.bitAnd(12, 10) == 8;
+    bitwiseOr         := i32.bitOr(12, 10) == 14;
+    bitwiseXor        := i32.bitXor(12, 10) == 6;
+    bitwiseNot        := i32.bitNot(0) == -1;
+    bitwiseShiftLeft  := i32.shiftLeft(3, 2) == 12;
+    bitwiseShiftRight := i32.shiftRight(-8, 1) == -4;
+    bitwiseMask       := i32.shiftLeft(1, 33) == 2;
+}</code></pre>
+<h2 id="arrays-and-slices"><a class="heading-anchor" href="#arrays-and-slices" aria-label="Link to section Arrays and slices">Arrays and slices</a> <a class="blog-anchor" href="#arrays-and-slices" aria-label="Copy link to section Arrays and slices">#</a></h2>
+<p>Another big feature that the language now has are fixed arrays, dynamic arrays and slices.</p>
+<p>The syntax for arrays is [type;size], and [val1, val2, val3] for the literal initializers.</p>
+<pre><code class="language-cara">def fixedArray()
+{
+    data: [i32; 4] = [1, 2, 3, 4];
+}</code></pre>
+<p>Syntax for dynamic arrays is similar but uses an underscrope for the size, and their literals have to end in ...</p>
+<pre><code class="language-cara">def dynamicArray()
+{
+    data: [i32; _] = [1, 2, 3, 4, ...];
+}</code></pre>
+<p>The language doesnt use symbols for indexing, unlike other popular languages, but has intrinsic fields and methods on both array types. My reasoning for that is similar to not having special syntax for bitwise operators. I might change my mind on that in the future, who knows.</p>
+<pre><code class="language-cara">def dynamicArray()
+{
+    xs := [1, ...];         // the dynamic array type is infered to be [i32, _]
+    xs.add(2);              // we can add values to the dynamic array
+    xs.set(0, 4);           // set value at index 0 to 4
+    first :: xs.at(0);      // get the value at index 0
+    length :: xs.length;    // get the length of the array
+    view :: xs.slice();     // get a slice to the array
+}</code></pre>
+<p>Slices arent as useful right now because you cant specify their ranges yet but they support the same intrinsics as arrays already.</p>
+<h2 id="more-diagnostics"><a class="heading-anchor" href="#more-diagnostics" aria-label="Link to section More diagnostics">More diagnostics</a> <a class="blog-anchor" href="#more-diagnostics" aria-label="Copy link to section More diagnostics">#</a></h2>
+<p>Alot more diagnostics got added since the last post too, and I&#39;m currently sitting just above 100 different kinds. I also added another test project just for diagnostics where I try to have at least one test per kind.</p>
+<p>There are still alot of holes that I need to cover but they are already useful.</p>
+<h2 id="three-years-in"><a class="heading-anchor" href="#three-years-in" aria-label="Link to section Three years in">Three years in</a> <a class="blog-anchor" href="#three-years-in" aria-label="Copy link to section Three years in">#</a></h2>
+<p>It feels like the project made alot of progress since the first commit and I learned alot since then, but there are a few things I would do different nowadays.</p>
+<p>The start of the project felt very slow because I only had a lexer and part of a parser but kept reworking and refining the lexer without being able to run code. So the next time i&#39;ll work on a similar project, I&#39;ll start with a slim pipeline from lexing to codegen. It is way more fun to work with the compiler now that i can actually compile my code and see the console output, which is very motivating.</p>
+<p>I really like having full control of the test and report libraries, I can just change what I dont like or add needed features.</p>
+<p>Right now the compiler isnt at the point where I can use it for anything useful yet but I think I&#39;m slowly getting there.</p>
+<h2 id="whats-next"><a class="heading-anchor" href="#whats-next" aria-label="Link to section Whats next">Whats next</a> <a class="blog-anchor" href="#whats-next" aria-label="Copy link to section Whats next">#</a></h2>
+<p>I&#39;m working on improving strings, they are currently just const char* for llvm codegen.</p>
+<p>Not sure what to work on after that but there is some tech debt that I need to clean up. The docs on the website also need an update, they havent been worked on since the first website version.</p>
+<p>Armin</p>
+  </article>
+</main>
+<script src="../../highlight.js"></script>
+<script src="../../theme.js"></script>
+<script src="../postToc.js"></script>
+</body>
+</html>
