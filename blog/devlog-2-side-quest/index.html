@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devlog #2 Side quest - Caracal Blog</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Devlog #2 Side quest - Caracal Blog</title>
     <meta name="description" content="Progress on Caracal and a weekend side quest." />
+    <link rel="canonical" href="https://caracal-lang.org/blog/devlog-2-side-quest/" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Caracal" />
     <meta property="og:title" content="Devlog #2 Side quest - Caracal Blog" />
@@ -15,65 +16,113 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Devlog #2 Side quest - Caracal Blog" />
-    <meta name="twitter:description" content="Progress on Caracal and a weekend side quest." />
-    <meta name="twitter:image" content="https://caracal-lang.org/assets/caracal-banner.png" />
-    <meta name="twitter:image:alt" content="Caracal social preview image" />
-    <link rel="canonical" href="https://caracal-lang.org/blog/devlog-2-side-quest/" />
     <link rel="alternate" type="application/rss+xml" title="Caracal Blog RSS" href="https://caracal-lang.org/blog/feed.xml" />
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
-  <script src="../../preload-theme.js"></script>
-  <link rel="stylesheet" href="../../style.css" />
-</head>
-<body class="post-page">
-<div class="top-nav">
-  <div class="top-nav-left">
-    <a class="top-nav-logo top-nav-logo-link" href="../../" aria-label="Go to home page">
-      <img src="../../assets/caracal.svg" alt="Caracal Logo" class="top-nav-logo-image" />
-      <span class="top-nav-logo-text">Caracal</span>
-    </a>
-    <div class="top-nav-content">
-    <a href="../../" class="top-nav-link">Home</a>
-    <a href="../../docs/" class="top-nav-link">Docs</a>
-    <a href="../../blog/" class="top-nav-link active">Blog</a>
+    <script src="../../script/preload-theme.js"></script>
+    <link rel="stylesheet" href="../../style/tokens.css" />
+    <link rel="stylesheet" href="../../style/base.css" />
+    <link rel="stylesheet" href="../../style/chrome.css" />
+    <link rel="stylesheet" href="../../style/code.css" />
+    <link rel="stylesheet" href="../../style/pages.css" />
+  </head>
+  <body>
+    <!-- chrome:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="../../">
+          <img src="../../assets/caracal.svg" alt="" width="32" height="36" />
+          <span>Caracal</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="../../">Home</a>
+          <a href="../../docs/">Docs</a>
+          <a href="../../blog/" aria-current="page">Blog</a>
+        </nav>
+        <div class="site-actions">
+          <a
+            class="icon-button github-link"
+            href="https://github.com/arminherling/Caracal"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+              />
+            </svg>
+            <span>Repo</span>
+          </a>
+          <button class="icon-button theme-toggle" id="themeToggle" type="button">
+            <svg class="theme-icon-dark" viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5Zm0-11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5Zm6.5 6.5a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1a.75.75 0 0 1 .75.75Zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1a.75.75 0 0 1 .75.75Zm9.15-4.65a.75.75 0 0 1 0 1.06l-.7.71a.75.75 0 1 1-1.07-1.06l.71-.71a.75.75 0 0 1 1.06 0ZM4.82 11.18a.75.75 0 0 1 0 1.06l-.71.71a.75.75 0 0 1-1.06-1.06l.71-.71a.75.75 0 0 1 1.06 0Zm7.83 2.83a.75.75 0 0 1-1.06 0l-.71-.71a.75.75 0 0 1 1.06-1.06l.71.71a.75.75 0 0 1 0 1.06ZM4.82 4.82a.75.75 0 0 1-1.06 0l-.71-.71A.75.75 0 0 1 4.11 3.05l.71.71a.75.75 0 0 1 0 1.06Z"
+              />
+            </svg>
+            <svg class="theme-icon-light" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M6.3 2.1a6.5 6.5 0 1 0 7.6 7.6 5.5 5.5 0 0 1-7.6-7.6Z" />
+            </svg>
+            <span id="themeLabel">Light</span>
+          </button>
+          <button
+            class="drawer-toggle"
+            id="drawerToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="siteDrawer"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="site-drawer" id="siteDrawer" data-open="false">
+      <a href="../../">Home</a>
+      <a href="../../docs/">Docs</a>
+      <a href="../../blog/">Blog</a>
+      <a href="https://github.com/arminherling/Caracal" rel="noopener noreferrer">Repo</a>
     </div>
-  </div>
-  <a class="top-nav-link github-link" href="https://github.com/arminherling/Caracal" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub">
-    <img src="../../assets/github-logo.png" alt="GitHub" />
-    <span>Repo</span>
-  </a>
-  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
-    <span class="icon" id="themeIcon">&#9788;</span>
-    <span id="themeLabel">Light</span>
-  </button>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</div>
-<div class="nav-overlay" id="navOverlay"></div>
-<nav id="nav">
-  <ul>
-    <li class="mobile-only-link"><a href="../../">Home</a></li>
-    <li class="mobile-only-link"><a href="../../docs/">Docs</a></li>
-    <li><a class="rss-sidebar-link" href="../../blog/feed.xml"><img src="../../assets/rss-icon.svg" alt="" aria-hidden="true" /> <span>RSS Feed</span></a></li>
-    <div class="section-title">Blog</div>
-    <li><a href="../../blog/">All Posts</a></li>
-        <div class="section-title">This Post</div>
-        <li id="postTocLoading"><span class="post-toc-empty">Loading headings...</span></li>
-        <li id="postToc"></li>
-  </ul>
-</nav>
-<main>
-  <p><a href="../../blog/">&larr; Back to blog</a></p>
-  <h1>Devlog #2 Side quest</h1>
-  <p class="post-meta"><time datetime="2026-03-17">2026-03-17</time></p>
-  <article class="blog-content">
-  <p>I made some nice progress since the first devlog for Caracal, and went on a side quest during the weekend.</p>
-<h2 id="references"><a class="heading-anchor" href="#references" aria-label="Link to section References">References</a> <a class="blog-anchor" href="#references" aria-label="Copy link to section References">#</a></h2>
+    <!-- chrome:end -->
+
+    <div class="docs-sidebar">
+      <nav class="docs-toc" id="docsToc" aria-label="On this page" data-open="false">
+        <div class="post-rail-links">
+          <a href="../feed.xml">
+            <img src="../../assets/rss-icon.svg" alt="" width="18" height="18" />
+            RSS feed
+          </a>
+          <a href="../">All posts</a>
+        </div>
+        <button
+          class="docs-toc-toggle"
+          id="docsTocToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="docsTocList"
+        >
+          On this page
+        </button>
+<ul class="docs-toc-list" id="docsTocList">
+<li class="docs-toc-chapter"><a href="#references">References</a></li>
+<li class="docs-toc-chapter"><a href="#order-independent-declarations">Order independent declarations</a></li>
+<li class="docs-toc-chapter"><a href="#multiple-file-support">Multiple file support</a></li>
+<li class="docs-toc-chapter"><a href="#carareport">CaraReport</a></li>
+<li class="docs-toc-chapter"><a href="#whats-next">Whats next</a></li>
+</ul>
+      </nav>
+    </div>
+
+    <main id="main" class="docs-main post-main">
+      <h1>Devlog #2 Side quest</h1>
+      <p class="post-meta"><time datetime="2026-03-17">17 March 2026</time></p>
+      <article class="post-content">
+<p>I made some nice progress since the first devlog for Caracal, and went on a side quest during the weekend.</p>
+<h2 id="references"><a class="heading-link" href="#references">References</a> <a class="heading-hash" href="#references" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>I got codegen for references working after some fighting with LLVM. They are also a steping stone to get methods working for type, since a hidden reference to the object is passed as first parameter for methods.</p>
-<pre><code class="language-cara">def doubler(x: ref i32) 
+<pre><code class="language-caracal">def doubler(x: ref i32) 
 { 
     x = x * 2;
 }
@@ -81,49 +130,47 @@
 def main()
 {
     x := 20;
-    printf(&quot;%d\n&quot;, x);  // prints 20
+    printf("%d\n", x);  // prints 20
     doubler(ref x);
-    printf(&quot;%d\n&quot;, x);   // prints 40
+    printf("%d\n", x);   // prints 40
 }</code></pre>
-<h2 id="order-independent-declarations"><a class="heading-anchor" href="#order-independent-declarations" aria-label="Link to section Order independent declarations">Order independent declarations</a> <a class="blog-anchor" href="#order-independent-declarations" aria-label="Copy link to section Order independent declarations">#</a></h2>
+<h2 id="order-independent-declarations"><a class="heading-link" href="#order-independent-declarations">Order independent declarations</a> <a class="heading-hash" href="#order-independent-declarations" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>After I got the codegen for references done, I went and changed the type checker and codegen to allow for order independent declarations. This means a function can call a functions thats not appears later in the code. The way I do it is pretty obvious I think. I run a pass over the ParseTree and declare all functions and methods, and do the type checking after that. This might not be the best way to do it but it works for now.</p>
-<pre><code class="language-cara">def main()
+<pre><code class="language-caracal">def main()
 {
     x := 20;
-    printf(&quot;%d\n&quot;, x);  // prints 20
+    printf("%d\n", x);  // prints 20
     doubler(ref x);
-    printf(&quot;%d\n&quot;, x);   // prints 40
+    printf("%d\n", x);   // prints 40
 }
 
 def doubler(x: ref i32) 
 { 
     x = x * 2;
 }</code></pre>
-<h2 id="multiple-file-support"><a class="heading-anchor" href="#multiple-file-support" aria-label="Link to section Multiple file support">Multiple file support</a> <a class="blog-anchor" href="#multiple-file-support" aria-label="Copy link to section Multiple file support">#</a></h2>
-<p>The previous changes allow me to support multiple files now, since I can just parse multiple files and then let the type checker do the first pass over all files.</p>
-<p>Which means I finally could add the <a href="https://github.com/arminherling/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara">first file</a> of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start.</p>
-<pre><code class="language-cara">// extern_c.cara
+<h2 id="multiple-file-support"><a class="heading-link" href="#multiple-file-support">Multiple file support</a> <a class="heading-hash" href="#multiple-file-support" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>The previous changes allow me to support multiple files now, since I can just parse multiple files and then let the type checker do the first pass over all files.<br /> Which means I finally could add the <a href="https://github.com/arminherling/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara">first file</a> of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start.</p>
+<pre><code class="language-caracal">// extern_c.cara
 #extern()
 def puts(message: string) i32 {}</code></pre>
-<pre><code class="language-cara">// main.cara
+<pre><code class="language-caracal">// main.cara
 def main()
 {
-    puts(&quot;Hello, World!&quot;);
+    puts("Hello, World!");
 }</code></pre>
-<h2 id="carareport"><a class="heading-anchor" href="#carareport" aria-label="Link to section CaraReport">CaraReport</a> <a class="blog-anchor" href="#carareport" aria-label="Copy link to section CaraReport">#</a></h2>
-<p>My next task was to get types working but I was struggling a bit with the LLVM codegen.</p>
-<p>So I decided to do a little sidequest to create an error reporting library for C++ since I didnt find a good one before. There are quite a few popular ones in Rustland like <a href="https://github.com/brendanzab/codespan">codespan</a>, <a href="https://github.com/zesterer/ariadne">ariadne</a> and <a href="https://github.com/zkat/miette">miette</a>, but none for C++.</p>
-<p>My favorite one out of those 3 are the errors generated by miette so I went to yakshave my own version with some changes. The main drawing code is roughly 1k lines of C++, way more than I wanted but it supports quite a few features.</p>
-<p>Overall I&#39;m pretty happy with the result, even if there are still bugs to fix.</p>
-<p><img src="../../assets/carareport.png" alt="CaraReport" /></p>
-<p>Link: <a href="https://github.com/Caracal-Lang/CaraReport">https://github.com/Caracal-Lang/CaraReport</a></p>
-<h2 id="whats-next"><a class="heading-anchor" href="#whats-next" aria-label="Link to section Whats next">Whats next</a> <a class="blog-anchor" href="#whats-next" aria-label="Copy link to section Whats next">#</a></h2>
+<h2 id="carareport"><a class="heading-link" href="#carareport">CaraReport</a> <a class="heading-hash" href="#carareport" aria-hidden="true" tabindex="-1">#</a></h2>
+<p>My next task was to get types working but I was struggling a bit with the LLVM codegen.<br /> So I decided to do a little sidequest to create an error reporting library for C++ since I didnt find a good one before. There are quite a few popular ones in Rustland like <a href="https://github.com/brendanzab/codespan">codespan</a>, <a href="https://github.com/zesterer/ariadne">ariadne</a> and <a href="https://github.com/zkat/miette">miette</a>, but none for C++.<br /> My favorite one out of those 3 are the errors generated by miette so I went to yakshave my own version with some changes. The main drawing code is roughly 1k lines of C++, way more than I wanted but it supports quite a few features.<br /> Overall I'm pretty happy with the result, even if there are still bugs to fix.</p>
+<p><button type="button" class="image-zoom" data-full="../../assets/carareport.png" data-alt="CaraReport"><img src="../../assets/carareport.png" alt="CaraReport" width="640" height="320" loading="lazy" /></button> Link: <a href="https://github.com/Caracal-Lang/CaraReport">https://github.com/Caracal-Lang/CaraReport</a></p>
+<h2 id="whats-next"><a class="heading-link" href="#whats-next">Whats next</a> <a class="heading-hash" href="#whats-next" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>I want to get types done next, the codegen should be close to working. What I also need are tests for the generated LLVM IR. I should also work on emitting errors, now that I got a nice error reporting lib.</p>
 <p>Armin</p>
-  </article>
-</main>
-<script src="../../highlight.js"></script>
-<script src="../../theme.js"></script>
-<script src="../postToc.js"></script>
-</body>
+      </article>
+    </main>
+
+    <script src="../../script/highlight.js"></script>
+    <script src="../../script/theme.js"></script>
+    <script src="../../script/nav.js"></script>
+    <script src="../../script/docs.js"></script>
+    <script src="../../script/lightbox.js"></script>
+  </body>
 </html>

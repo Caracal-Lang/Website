@@ -1,19 +1,24 @@
-// paramethers are used to initialize the fields of the type
+// Constructor parameters are specified on the type
 type Vector2D(x: i32, y: i32)
 {
-    // fields can be initialized with the parameters
-    x := x;
-    y := y;
+    x := x
+    y := y
 
-    // methods are defined inside the type
+    // we access fields with a leading dot, there is not "this" keyword
     def lengthSquared() i32
     {
-        return (.x * .x) + (.y * .y);
+        return (.x %* .x) %+ (.y %* .y);
     }
 
-    // static methods are defined with the type name
-    def Vector2D.Zero() Vector2D
+    // Static methods start with the type name
+    def Vector2D.zero() Vector2D
     {
         return Vector2D.new(0, 0);
     }
+}
+
+def main() i32
+{
+    point := Vector2D.new(3, 4);
+    return point.lengthSquared();
 }

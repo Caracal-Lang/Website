@@ -1,114 +1,163 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caracal - Home</title>
-  <meta name="description" content="Caracal is an imperative compiled language focused on simple syntax and sensible defaults." />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Caracal" />
-  <meta property="og:title" content="Caracal - Home" />
-  <meta property="og:description" content="Caracal is an imperative compiled language focused on simple syntax and sensible defaults." />
-  <meta property="og:url" content="https://caracal-lang.org/" />
-  <meta property="og:image" content="https://caracal-lang.org/assets/caracal-banner.png" />
-  <meta property="og:image:alt" content="Caracal social preview image" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Caracal - Home" />
-  <meta name="twitter:description" content="Caracal is an imperative compiled language focused on simple syntax and sensible defaults." />
-  <meta name="twitter:image" content="https://caracal-lang.org/assets/caracal-banner.png" />
-  <link rel="canonical" href="https://caracal-lang.org/" />
-  <meta property="og:image:alt" content="Caracal social preview image" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Caracal - Home" />
-  <meta name="twitter:description" content="Caracal is an imperative compiled language focused on simple syntax and sensible defaults." />
-  <meta name="twitter:image" content="https://caracal-lang.org/assets/caracal-banner.png" />
-  <link rel="canonical" href="https://caracal-lang.org/" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <script src="preload-theme.js"></script>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="home-page">
-<div class="top-nav">
-  <div class="top-nav-left">
-    <a class="top-nav-logo top-nav-logo-link" href="./" aria-label="Go to home page">
-      <img src="assets/caracal.svg" alt="Caracal Logo" class="top-nav-logo-image" />
-      <span class="top-nav-logo-text">Caracal</span>
-    </a>
-    <div class="top-nav-content">
-      <a href="./" class="top-nav-link active">Home</a>
-      <a href="docs/" class="top-nav-link">Docs</a>
-      <a href="blog/" class="top-nav-link">Blog</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caracal</title>
+    <meta
+      name="description"
+      content="Caracal is an imperative, compiled language with simple syntax, sensible defaults and static typing that stays out of your way."
+    />
+    <link rel="canonical" href="https://caracal-lang.org/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Caracal" />
+    <meta property="og:title" content="Caracal" />
+    <meta
+      property="og:description"
+      content="Caracal is an imperative, compiled language with simple syntax, sensible defaults and static typing that stays out of your way."
+    />
+    <meta property="og:url" content="https://caracal-lang.org/" />
+    <meta property="og:image" content="https://caracal-lang.org/assets/caracal-banner.png" />
+    <meta property="og:image:alt" content="The Caracal language" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <script src="script/preload-theme.js"></script>
+    <link rel="stylesheet" href="style/tokens.css" />
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/chrome.css" />
+    <link rel="stylesheet" href="style/code.css" />
+    <link rel="stylesheet" href="style/pages.css" />
+  </head>
+  <body>
+    <!-- chrome:start -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="./">
+          <img src="assets/caracal.svg" alt="" width="32" height="36" />
+          <span>Caracal</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="./" aria-current="page">Home</a>
+          <a href="docs/">Docs</a>
+          <a href="blog/">Blog</a>
+        </nav>
+        <div class="site-actions">
+          <a
+            class="icon-button github-link"
+            href="https://github.com/arminherling/Caracal"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+              />
+            </svg>
+            <span>Repo</span>
+          </a>
+          <button class="icon-button theme-toggle" id="themeToggle" type="button">
+            <svg class="theme-icon-dark" viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 1.5a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 12.5Zm0-11a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-1.5 0v-1A.75.75 0 0 1 8 1.5Zm6.5 6.5a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1a.75.75 0 0 1 .75.75Zm-11 0a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1 0-1.5h1a.75.75 0 0 1 .75.75Zm9.15-4.65a.75.75 0 0 1 0 1.06l-.7.71a.75.75 0 1 1-1.07-1.06l.71-.71a.75.75 0 0 1 1.06 0ZM4.82 11.18a.75.75 0 0 1 0 1.06l-.71.71a.75.75 0 0 1-1.06-1.06l.71-.71a.75.75 0 0 1 1.06 0Zm7.83 2.83a.75.75 0 0 1-1.06 0l-.71-.71a.75.75 0 0 1 1.06-1.06l.71.71a.75.75 0 0 1 0 1.06ZM4.82 4.82a.75.75 0 0 1-1.06 0l-.71-.71A.75.75 0 0 1 4.11 3.05l.71.71a.75.75 0 0 1 0 1.06Z"
+              />
+            </svg>
+            <svg class="theme-icon-light" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M6.3 2.1a6.5 6.5 0 1 0 7.6 7.6 5.5 5.5 0 0 1-7.6-7.6Z" />
+            </svg>
+            <span id="themeLabel">Light</span>
+          </button>
+          <button
+            class="drawer-toggle"
+            id="drawerToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="siteDrawer"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="site-drawer" id="siteDrawer" data-open="false">
+      <a href="./">Home</a>
+      <a href="docs/">Docs</a>
+      <a href="blog/">Blog</a>
+      <a href="https://github.com/arminherling/Caracal" rel="noopener noreferrer">Repo</a>
     </div>
-  </div>
-  <a class="top-nav-link github-link" href="https://github.com/arminherling/Caracal" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub">
-    <img src="assets/github-logo.png" alt="GitHub" />
-    <span>Repo</span>
-  </a>
-  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
-    <span class="icon" id="themeIcon">&#9788;</span>
-    <span id="themeLabel">Light</span>
-  </button>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</div>
-<div class="nav-overlay" id="navOverlay"></div>
-<nav id="nav">
-  <ul>
-    <li><a href="./">Home</a></li>
-    <li><a href="docs/">Docs</a></li>
-    <li><a href="blog/">Blog</a></li>
-  </ul>
-</nav>
-<main class="home-main">
-  <div class="home-intro-row">
-    <div class="home-intro-copy">
-      <h1>Caracal</h1>
-      <p class="intro-subtitle">An imperative compiled language focused on clear syntax and sensible defaults.</p>
-      <p>
-        Designed for clear, enjoyable syntax with practical defaults. 
-        Caracal aims to feel lightweight to write while remaining statically typed through strong type inference.
-        The project is currently in active development, with the core syntax and semantics being fleshed out and implemented.
-        It uses LLVM for code generation, targeting native compilation.
-      </p>
-    </div>
-    <img src="assets/caracal.svg" alt="Caracal Logo" class="home-logo" />
-  </div>
+    <!-- chrome:end -->
 
-  <div class="example-picker">
-    <label for="exampleSelect">Examples:</label>
-    <select id="exampleSelect">
-      <option value="hello" selected>Hello World</option>
-      <option value="enum">Enum Usage</option>
-      <option value="fibonacci">Fibonacci</option>
-      <option value="types">Types</option>
-      <option value="trailing-if">Trailing If</option>
-    </select>
-  </div>
+    <main id="main">
+      <section class="home container">
+        <div>
+          <h1>Caracal</h1>
+          <p class="lead">
+            An imperative compiled language with focus on clear syntax and sensible defaults.
+          </p>
+          <p class="home-body">
+            Designed for clear, enjoyable syntax with practical defaults. 
+            Caracal aims to feel lightweight to write while remaining statically typed through strong type inference.
+            The project is currently in active development, with the core syntax and semantics being fleshed out and implemented.
+          </p>
+          <div class="home-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/arminherling/Caracal"
+              rel="noopener noreferrer"
+              >Source</a
+            >
+          </div>
+        </div>
+        <img
+          class="home-logo"
+          src="assets/caracal.svg"
+          alt="The Caracal logo, a stylised caracal head"
+          width="240"
+          height="269"
+        />
+      </section>
 
-  <pre><code class="language-caracal" id="homeExampleCode">def main()
+      <section class="section container" id="examples">
+        <div class="code-panel">
+          <div class="code-panel-bar">
+            <label for="exampleSelect">Example</label>
+            <select id="exampleSelect">
+              <option value="hello" selected>Hello world</option>
+              <option value="fibonacci">Fibonacci</option>
+              <option value="enum">Enums</option>
+              <option value="types">Types</option>
+              <option value="trailing-if">Trailing if</option>
+            </select>
+            <span class="code-panel-file" id="exampleFileName">hello-world.cara</span>
+          </div>
+          <pre><code class="language-caracal" id="homeExampleCode">def main() i32
 {
-    print("Hello, World!");
+    C.puts("Hello, world!");
+    return 0;
 }</code></pre>
+        </div>
+      </section>
 
-  <h2>Goals</h2>
-  <ul class="home-overview-list">
-    <li>Native compilation</li>
-    <li>Good sensible defaults</li>
-    <li>Powerful generics</li>
-    <li>Low barrier for tests</li>
-    <li>Maybe not too ugly syntax</li>
-  </ul>
+      <section class="section container" id="goals">
+        <h2 class="section-heading">Goals</h2>
+        <ul>
+          <li>Native compilation</li>
+          <li>Sensible defaults</li>
+          <li>Powerful generics</li>
+          <li>A low barrier for tests</li>
+          <li>Maybe not too ugly syntax</li>
+        </ul>
+      </section>
+    </main>
 
-</main>
-<script src="highlight.js"></script>
-<script src="home-examples.js"></script>
-<script src="theme.js"></script>
-</body>
+    <script src="script/highlight.js"></script>
+    <script src="script/home-examples.js"></script>
+    <script src="script/theme.js"></script>
+    <script src="script/nav.js"></script>
+  </body>
 </html>

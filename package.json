@@ -1,6 +1,6 @@
 {
   "name": "caracal-website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "devDependencies": {
     "eslint": "^8.50.0",
@@ -9,8 +9,18 @@
     "eslint-plugin-prettier": "^4.2.1"
   },
   "scripts": {
-    "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --ext .js --fix",
-    "format": "prettier --write \"**/*.js\""
+    "serve": "npx --yes http-server . -p 4173 -c-1",
+    "build": "npm run build:docs && npm run build:blog",
+    "build:docs": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build-Docs.ps1",
+    "build:blog": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Build-Blog.ps1",
+    "lint": "eslint script --ext .js",
+    "lint:fix": "eslint script --ext .js --fix",
+    "format": "prettier --write \"script/**/*.js\" \"style/**/*.css\" \"*.html\"",
+    "test": "npm run test:markdown && npm run test:highlight && npm run test:docsnav && npm run test:site && npm run test:urls",
+    "test:highlight": "node Scripts/Test-Highlighter.mjs",
+    "test:docsnav": "node Scripts/Test-DocsNav.mjs",
+    "test:site": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Test-Site.ps1",
+    "test:urls": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Test-UrlParity.ps1",
+    "test:markdown": "powershell -NoProfile -ExecutionPolicy Bypass -File Scripts/Test-Markdown.ps1"
   }
 }

@@ -1,0 +1,109 @@
+/* code presentation: inline code, blocks, syntax token colors */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9375em;
+}
+
+:not(pre) > code {
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-code);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+pre {
+  overflow-x: auto;
+  /* tighter above and below than at the sides */
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-code);
+  line-height: 1.55;
+  tab-size: 4;
+}
+
+pre code {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--text);
+}
+
+.code-panel {
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-code);
+  overflow: hidden;
+}
+
+.code-panel-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-raised);
+  font-size: var(--text-small);
+}
+
+.code-panel-bar label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.code-panel-bar select {
+  /* pushes the filename right */
+  margin-right: auto;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+
+.code-panel-file {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.code-panel pre {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  margin: 0;
+}
+
+/* syntax tokens, emitted by script/highlight.js */
+
+.hl-kw {
+  color: var(--syntax-keyword);
+}
+.hl-type {
+  color: var(--syntax-type);
+}
+.hl-str {
+  color: var(--syntax-string);
+}
+.hl-num {
+  color: var(--syntax-number);
+}
+.hl-cmt {
+  color: var(--syntax-comment);
+  font-style: italic;
+}
+.hl-prep {
+  color: var(--syntax-annotation);
+}
+.hl-fn {
+  color: var(--syntax-function);
+}

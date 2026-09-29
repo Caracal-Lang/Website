@@ -6,7 +6,7 @@ description: The first devlog for Caracal, covering goals, current progress, and
 
 Welcome to the first Caracal devlog.
 
-```cara
+```cara hello.cara
 def main()
 {
     print("Hello, World!");
@@ -17,15 +17,15 @@ This post is the start of my online devlog about the Caracal compiler and toolin
 
 ## Why this project exists
 
-Since every new language apparently needs to justify their existence, here is mine:
+Since every new language apparently needs to justify their existence, here is mine:<br />
 Caracal exists because I'm interested in language design and like to experiment with compilers and related tech. I'm trying to create a language that I'll enjoy using. It would be cool if other people are gonna like and use the language too, but it's also fine if that doesn't happen.
 
 ## Status
 
-The basic language features are currently slowly getting worked out. 
-Alot of the syntax is already getting parsed, whats mainly missing here is variant types and generics.
-A big chunk of that is already getting type checked and has working LLVM codegen, like functions, constants and variables. My tests currently only test the happy path of the compiler, the reason for that is because I can make some good progress on the language without getting bogged down. Another reason is that I don't have diagnostics yet and need to prepare tests for errors and warnings.
-There also isn't a standard library or a way to create projects yet.
+The basic language features are currently slowly getting worked out.<br />
+Alot of the syntax is already getting parsed, whats mainly missing here is variant types and generics.<br />
+A big chunk of that is already getting type checked and has working LLVM codegen, like functions, constants and variables. My tests currently only test the happy path of the compiler, the reason for that is because I can make some good progress on the language without getting bogged down. Another reason is that I don't have diagnostics yet and need to prepare tests for errors and warnings.<br />
+There also isn't a standard library or a way to create projects yet.<br />
 I created this site, as you can see, to document the language and keep a devlog that I can link to people.
 
 ## What is next

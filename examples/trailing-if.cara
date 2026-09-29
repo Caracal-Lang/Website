@@ -1,3 +1,4 @@
+// return, break and skip can all have a trailing if
 def process(x: i32) i32
 {
     return 0 if x < 0;
@@ -5,7 +6,7 @@ def process(x: i32) i32
     i := 0;
     while true
     {
-        i = i + 1;
+        i = i %+ 1;
         skip if i < 3;
         break if i >= x;
     }

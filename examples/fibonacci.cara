@@ -1,11 +1,11 @@
+// Arithmetic with a leading % is allowed to overflow/underflow
 def fib(n: i32) i32
 {
     return n if n <= 1;
-    return fib(n - 1) + fib(n - 2);
+    return fib(n %- 1) %+ fib(n %- 2);
 }
 
-def main()
+def main() i32
 {
-    result :: fib(8);
-    print(result);
+    return fib(8);
 }

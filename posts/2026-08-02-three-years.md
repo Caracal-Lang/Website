@@ -8,22 +8,22 @@ image_alt: Three-ish years of Caracal
 
 ## 3-ish year anniversary
 
-The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to [RPG Maker](https://www.rpgmakerweb.com/) or [Godot](https://godotengine.org). The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I'm mostly interested in.
-The project was renamed to Aalenien in [October 2023](https://github.com/arminherling/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069). I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.
-The project was officially renamed to Caracal in [October 2025](https://github.com/arminherling/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85). I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.
+The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to [RPG Maker](https://www.rpgmakerweb.com/) or [Godot](https://godotengine.org). The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I'm mostly interested in.<br />
+The project was renamed to Aalenien in [October 2023](https://github.com/arminherling/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069). I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.<br />
+The project was officially renamed to Caracal in [October 2025](https://github.com/arminherling/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85). I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.<br />
 The project has roughly 600 commits, 1500 tests and sits at around 23k lines of C++ currently, not counting my test and report libraries. 
 
 ## Finished IR layer and codegen rewrite
 
-I finished splitting the old LLVM codegen into the new IR layer since the last blog post. The new IR layer is similar to the LLVM IR, which made the new codegen straightforward to implement.
-One of the main reasons for the rework was my broken codegen for nested control flow, this is fixed now and works. The new IR layer also allowed me to add my own optimization passes after lowering. There is only constant folding and dead code elimination right now but its easily extendable.
+I finished splitting the old LLVM codegen into the new IR layer since the last blog post. The new IR layer is similar to the LLVM IR, which made the new codegen straightforward to implement.<br />
+One of the main reasons for the rework was my broken codegen for nested control flow, this is fixed now and works. The new IR layer also allowed me to add my own optimization passes after lowering. There is only constant folding and dead code elimination right now but its easily extendable.<br />
 The result of the whole rewrite is that ALL of the current tests pass lowering and codegen.
 
 <img src="../../assets/test-result-august-2026.png" alt="Test Result August 2026" />
 
 ## Global init const
 
-I added a few new features to the language, one of them are global init constants. Caracal doesnt support global variables but there might be cases where we want to assign them during startup. The only place where they can be assigned is during the main function. They are immutable after that point.
+I added a few new features to the language, one of them are global init constants. Caracal doesnt support global variables but there might be cases where we want to assign them during startup. The only place where they can be assigned is during the main function. They are immutable after that point.<br />
 One example is that I want to create globals that contain the path to the executable or the program startup time.
 
 ```cara
@@ -45,7 +45,7 @@ def readG() i32
 
 ## Builtin types and operators
 
-I also changed how builtin types are declared to the compiler. Previously they were hardcoded in C++ but I moved them all to the prelude pass. The definitions in the prelude dictate which operators are available on a type or how many bits integers are for example. If a type definition is lacking declarations for operators then they can't be used, which is useful for disallowing equality checks on floats for example.
+I also changed how builtin types are declared to the compiler. Previously they were hardcoded in C++ but I moved them all to the prelude pass. The definitions in the prelude dictate which operators are available on a type or how many bits integers are for example. If a type definition is lacking declarations for operators then they can't be used, which is useful for disallowing equality checks on floats for example.<br />
 The prelude currently contains definitions for bool, u8, i8, u16, i16, u32, i32, u64, i64, f32, f64, rawptr and cstring.
 
 ```cara
@@ -116,7 +116,7 @@ def stuff()
 
 ## Arrays and slices
 
-Another big feature that the language now has are fixed arrays, dynamic arrays and slices.
+Another big feature that the language now has are fixed arrays, dynamic arrays and slices.<br />
 The syntax for arrays is [type;size], and [val1, val2, val3] for the literal initializers.
 
 ```cara
@@ -153,19 +153,19 @@ Slices arent as useful right now because you cant specify their ranges yet but t
 
 ## More diagnostics
 
-Alot more diagnostics got added since the last post too, and I'm currently sitting just above 100 different kinds. I also added another test project just for diagnostics where I try to have at least one test per kind.
+Alot more diagnostics got added since the last post too, and I'm currently sitting just above 100 different kinds. I also added another test project just for diagnostics where I try to have at least one test per kind.<br />
 There are still alot of holes that I need to cover but they are already useful.
 
 ## Three years in
 
-It feels like the project made alot of progress since the first commit and I learned alot since then, but there are a few things I would do different nowadays.
-The start of the project felt very slow because I only had a lexer and part of a parser but kept reworking and refining the lexer without being able to run code. So the next time i'll work on a similar project, I'll start with a slim pipeline from lexing to codegen. It is way more fun to work with the compiler now that i can actually compile my code and see the console output, which is very motivating.
-I really like having full control of the test and report libraries, I can just change what I dont like or add needed features.
+It feels like the project made alot of progress since the first commit and I learned alot since then, but there are a few things I would do different nowadays.<br />
+The start of the project felt very slow because I only had a lexer and part of a parser but kept reworking and refining the lexer without being able to run code. So the next time i'll work on a similar project, I'll start with a slim pipeline from lexing to codegen. It is way more fun to work with the compiler now that i can actually compile my code and see the console output, which is very motivating.<br />
+I really like having full control of the test and report libraries, I can just change what I dont like or add needed features.<br />
 Right now the compiler isnt at the point where I can use it for anything useful yet but I think I'm slowly getting there.
 
 ## Whats next
 
-I'm working on improving strings, they are currently just const char* for llvm codegen.
+I'm working on improving strings, they are currently just const char* for llvm codegen.<br />
 Not sure what to work on after that but there is some tech debt that I need to clean up. The docs on the website also need an update, they havent been worked on since the first website version.
 
 Armin
