@@ -1,4 +1,4 @@
-/* design tokens: color, type, space, radius
+/* design tokens: color, type, space, borders, shadows
    every value the rest of the stylesheets use is declared here */
 
 :root,
@@ -10,22 +10,23 @@
   --bg-raised: #111a31;
   --bg-code: #0c1426;
 
-  /* lines */
-  --border: #22304d;
-  --border-strong: #35466b;
+  /* ink: borders and hard shadows */
+  --border: #f2ece1;
+  --border-strong: #ffffff;
+  --shadow-color: #ff9529;
 
   /* text */
   --text: #f2ece1;
-  --text-muted: #a4b2c9;
-  --text-lead: #b5a890;
+  --text-muted: #b9b2a5;
   --text-heading: #ffffff;
 
-  /* accent */
+  /* accent: text on the page, fill behind ink */
   --accent: #ff9529;
   --accent-hover: #ffb862;
-  --accent-contrast: #1a1000;
-  --accent-quiet: rgba(255, 149, 41, 0.12);
-  --accent-line: rgba(255, 149, 41, 0.45);
+  --accent-fill: #ff9529;
+  --accent-fill-alt: #ffc34c;
+  --accent-contrast: #000000;
+  --sidebar-hover-bg: #8a3f00;
 
   /* syntax */
   --syntax-keyword: #ff8a80;
@@ -45,19 +46,20 @@
   --bg-raised: #f2e0bd;
   --bg-code: #f5e7cb;
 
-  --border: #cdab74;
-  --border-strong: #b08f58;
+  --border: #000000;
+  --border-strong: #000000;
+  --shadow-color: var(--accent);
 
-  --text: #131d39;
+  --text: #111111;
   --text-muted: #4d4636;
-  --text-lead: #505050;
-  --text-heading: #0a1128;
+  --text-heading: #000000;
 
-  --accent: #874507;
-  --accent-hover: #653305;
-  --accent-contrast: #fff6e9;
-  --accent-quiet: rgba(135, 69, 7, 0.12);
-  --accent-line: rgba(135, 69, 7, 0.4);
+  --accent: #8a3f00;
+  --accent-hover: #5c2a00;
+  --accent-fill: #ff9529;
+  --accent-fill-alt: #ffc34c;
+  --accent-contrast: #000000;
+  --sidebar-hover-bg: rgba(255, 149, 41, 0.22);
 
   --syntax-keyword: #b02718;
   --syntax-type: #0550ae;
@@ -71,15 +73,13 @@
 :root {
   /* the orange bar is the same in both themes */
   --header-bg: #ff9529;
-  --header-border: #c2660a;
-  --header-text: #0a3069;
-  --header-hover-bg: rgba(255, 255, 255, 0.15);
-  --header-hover-line: rgba(255, 255, 255, 0.3);
-  --header-hover-text: #ffffff;
-  --header-active-text: #fef4e6;
+  --header-border: #000000;
+  --header-text: #000000;
+  --header-hover-bg: #ffffff;
 
   /* type: 1.25 modular scale above a 17px body */
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif;
+  --font-heading: 'Arial Black', 'Segoe UI Black', 'Helvetica Neue', Impact, sans-serif;
   --font-mono: 'Cascadia Code', 'JetBrains Mono', Consolas, 'SF Mono', Menlo, monospace;
 
   --text-small: 0.8125rem;
@@ -87,9 +87,9 @@
   --text-step-1: 1.25rem;
   --text-step-2: 1.5rem;
   --text-step-3: 1.875rem;
-  --text-step-4: 2.25rem;
+  --text-step-4: 2.75rem;
 
-  --leading-tight: 1.2;
+  --leading-tight: 1.15;
   --leading-body: 1.65;
 
   /* space: 8px rhythm, with one half step */
@@ -100,11 +100,19 @@
   --space-5: 32px;
   --space-6: 48px;
 
-  --radius-sm: 6px;
-  --radius: 10px;
-  --radius-lg: 16px;
+  /* square corners, thick lines, unblurred offset shadows */
+  --radius-sm: 2px;
+  --radius: 4px;
 
-  --header-height: 60px;
+  --line: 3px;
+  --line-thin: 2px;
+
+  --shadow-small: 3px 3px 0 var(--shadow-color);
+  --shadow: 5px 5px 0 var(--shadow-color);
+  --shadow-large: 8px 8px 0 var(--shadow-color);
+  --shadow-ink: 3px 3px 0 #000000;
+
+  --header-height: 64px;
   --docs-nav-width: 260px;
   --content-width: 1080px;
 }

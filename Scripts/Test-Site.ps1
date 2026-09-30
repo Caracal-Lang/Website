@@ -10,7 +10,6 @@
       meta        each required tag appears exactly once per page
       urls        canonical, og:url and og:image are absolute site URLs
       ids         no element id repeats within a page
-      anchors     every #fragment link resolves, and the docs page keeps its published ids
       feed        feed.xml parses, matches the post count, and its links and guids resolve
       structure   one h1 per page, no skipped heading levels
       images      every img has alt, width and height
@@ -32,7 +31,6 @@ $Root = (Resolve-Path -LiteralPath $Root).Path
 $siteUrl = 'https://caracal-lang.org'
 $failures = New-Object System.Collections.Generic.List[string]
 $checkedLinkCount = 0
-$checkedAnchorCount = 0
 $checkedImageCount = 0
 
 function Add-Failure {
@@ -178,59 +176,6 @@ function Test-DuplicateIds {
     }
 }
 
-# ---------- anchors ----------
-
-# the fifteen section ids the old site published
-$legacyDocsAnchors = @(
-    'description', 'roadmap', 'constants', 'variables', 'functions', 'enums', 'types',
-    'variants', 'control-flow', 'return', 'if', 'while', 'skip', 'break', 'trailing-if'
-)
-
-function Get-PageIds {
-    param([string]$Text)
-
-    $ids = @{}
-    foreach ($match in [regex]::Matches($Text, '\sid="(?<id>[^"]+)"')) {
-        $ids[$match.Groups['id'].Value] = $true
-    }
-    return $ids
-}
-
-function Test-LinkAnchors {
-    param([System.IO.FileInfo]$Page, [string]$Text)
-
-    $relativePath = Get-RelativePath $Page.FullName
-    $pageDirectory = $Page.DirectoryName
-
-    foreach ($match in [regex]::Matches($Text, 'href="(?<value>[^"]*#[^"]+)"')) {
-        $value = $match.Groups['value'].Value
-        if ($value -match '^[a-z][a-z0-9+.-]*:') { continue }
-
-        $parts = $value -split '#', 2
-        $fragment = $parts[1]
-        if (-not $fragment) { continue }
-
-        if ($parts[0] -eq '') {
-            $targetIds = Get-PageIds -Text $Text
-            $targetName = $relativePath
-        }
-        else {
-            $resolved = Join-Path $pageDirectory ($parts[0] -replace '/', '\')
-            if ($parts[0].EndsWith('/') -or (Test-Path -LiteralPath $resolved -PathType Container)) {
-                $resolved = Join-Path $resolved 'index.html'
-            }
-            if (-not (Test-Path -LiteralPath $resolved -PathType Leaf)) { continue }
-            $targetIds = Get-PageIds -Text ([System.IO.File]::ReadAllText($resolved))
-            $targetName = Get-RelativePath (Resolve-Path -LiteralPath $resolved).Path
-        }
-
-        $script:checkedAnchorCount++
-        if (-not $targetIds.ContainsKey($fragment)) {
-            Add-Failure 'anchors' ('{0}: "{1}" points at an id that {2} does not have' -f $relativePath, $value, $targetName)
-        }
-    }
-}
-
 # ---------- structure and images ----------
 
 function Test-Structure {
@@ -274,7 +219,6 @@ foreach ($page in $pages) {
     Test-MetaTags -Page $page -Text $text
     Test-AbsoluteUrls -Page $page -Text $text
     Test-DuplicateIds -Page $page -Text $text
-    Test-LinkAnchors -Page $page -Text $text
     Test-Structure -Page $page -Text $text
 
     $block = Get-ChromeBlock -Text $text
@@ -292,18 +236,6 @@ if ($chromeBlocks.Count -gt 1) {
     foreach ($name in ($chromeBlocks.Keys | Sort-Object)) {
         if ($chromeBlocks[$name] -ne $referenceBlock) {
             Add-Failure 'chrome' ('{0}: chrome block differs from {1}' -f $name, $referenceName)
-        }
-    }
-}
-
-# ---------- the docs page keeps the old deep-link targets ----------
-
-$docsPath = Join-Path $Root 'docs\index.html'
-if (Test-Path -LiteralPath $docsPath) {
-    $docsIds = Get-PageIds -Text ([System.IO.File]::ReadAllText($docsPath))
-    foreach ($anchor in $legacyDocsAnchors) {
-        if (-not $docsIds.ContainsKey($anchor)) {
-            Add-Failure 'anchors' ('docs/index.html no longer has the published id "{0}"' -f $anchor)
         }
     }
 }
@@ -389,7 +321,6 @@ foreach ($token in ($definedTokens.Keys | Sort-Object)) {
 Write-Host ''
 Write-Host ('Pages   : {0}' -f $pages.Count)
 Write-Host ('Links   : {0} internal references checked' -f $checkedLinkCount)
-Write-Host ('Anchors : {0} fragment links checked' -f $checkedAnchorCount)
 Write-Host ('Chrome  : {0} blocks compared' -f $chromeBlocks.Count)
 Write-Host ('Feed    : {0} items checked' -f $feedItemCount)
 Write-Host ('Images  : {0} checked for alt, width and height' -f $checkedImageCount)

@@ -9,8 +9,8 @@ samp {
 }
 
 :not(pre) > code {
-  padding: 0.15em 0.4em;
-  border: 1px solid var(--border);
+  padding: 0.1em 0.4em;
+  border: var(--line-thin) solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--bg-code);
   color: var(--text);
@@ -20,10 +20,11 @@ samp {
 pre {
   overflow-x: auto;
   /* tighter above and below than at the sides */
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--border);
+  padding: var(--space-3) var(--space-4);
+  border: var(--line) solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-code);
+  box-shadow: var(--shadow);
   line-height: 1.55;
   tab-size: 4;
 }
@@ -36,9 +37,10 @@ pre code {
 
 .code-panel {
   margin-bottom: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: var(--line) solid var(--border);
+  border-radius: var(--radius);
   background: var(--bg-code);
+  box-shadow: var(--shadow-large);
   overflow: hidden;
 }
 
@@ -48,38 +50,43 @@ pre code {
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-raised);
+  border-bottom: var(--line) solid var(--border);
+  background: var(--accent-fill);
+  color: var(--accent-contrast);
   font-size: var(--text-small);
 }
 
 .code-panel-bar label {
-  color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .code-panel-bar select {
   /* pushes the filename right */
   margin-right: auto;
   padding: var(--space-1) var(--space-2);
-  border: 1px solid var(--border-strong);
+  border: var(--line-thin) solid #000000;
   border-radius: var(--radius-sm);
-  background: var(--bg);
-  color: var(--text);
+  background: #ffffff;
+  color: #000000;
+  box-shadow: var(--shadow-ink);
   font-family: inherit;
   font-size: var(--text-small);
+  font-weight: 700;
   cursor: pointer;
 }
 
 .code-panel-file {
-  color: var(--text-muted);
   font-family: var(--font-mono);
+  font-weight: 700;
 }
 
 .code-panel pre {
   border: 0;
   border-radius: 0;
   background: transparent;
+  box-shadow: none;
   margin: 0;
 }
 

@@ -35,9 +35,10 @@ h2,
 h3,
 h4 {
   color: var(--text-heading);
+  font-family: var(--font-heading);
   line-height: var(--leading-tight);
-  font-weight: 650;
-  letter-spacing: -0.015em;
+  font-weight: 900;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
@@ -63,21 +64,28 @@ li + li {
   margin-top: var(--space-1);
 }
 
-a {
+li::marker {
   color: var(--accent);
-  text-decoration: none;
+  font-weight: 900;
 }
 
-a:hover {
-  color: var(--accent-hover);
+a {
+  color: var(--accent);
+  font-weight: 600;
   text-decoration: underline;
+  text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
+a:hover {
+  color: var(--accent-contrast);
+  background: var(--accent-fill);
+  text-decoration: none;
+}
+
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: var(--line) solid var(--accent);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
 
 img,
@@ -89,7 +97,7 @@ svg {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: var(--line) solid var(--border);
   margin: var(--space-6) 0;
 }
 
@@ -97,6 +105,9 @@ table {
   width: 100%;
   max-width: var(--content-width);
   border-collapse: collapse;
+  border: var(--line) solid var(--border);
+  box-shadow: var(--shadow-small);
+  background: var(--bg-raised);
   font-size: var(--text-small);
 }
 
@@ -104,13 +115,15 @@ th,
 td {
   text-align: left;
   padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--border);
+  border: var(--line-thin) solid var(--border);
 }
 
 th {
-  background: var(--bg-raised);
-  color: var(--text-heading);
-  font-weight: 600;
+  background: var(--accent-fill);
+  color: var(--accent-contrast);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* shared building blocks */
@@ -124,7 +137,8 @@ th {
 
 .lead {
   font-size: var(--text-step-1);
-  color: var(--text-lead);
+  color: var(--text);
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -132,37 +146,40 @@ th {
   color: var(--text-muted);
 }
 
+/* the button lifts on hover and presses flat on click */
 .button {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 6px 20px;
-  border: 1px solid var(--border-strong);
+  padding: var(--space-2) var(--space-4);
+  border: var(--line) solid var(--border);
   border-radius: var(--radius);
   font-size: var(--text-body);
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
   color: var(--text);
   background: var(--bg-raised);
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .button:hover {
-  border-color: var(--accent-line);
-  background: var(--accent-quiet);
   color: var(--text);
-  text-decoration: none;
+  background: var(--bg-raised);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-large);
 }
 
-.button-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
+.button:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
 }
 
+.button-primary,
 .button-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--accent-fill);
   color: var(--accent-contrast);
 }
 
@@ -181,10 +198,11 @@ th {
   left: var(--space-2);
   z-index: 100;
   padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  background: var(--accent);
+  border: var(--line) solid #000000;
+  background: var(--accent-fill-alt);
   color: var(--accent-contrast);
-  font-weight: 600;
+  font-weight: 800;
+  box-shadow: var(--shadow-ink);
   transform: translateY(-200%);
 }
 
