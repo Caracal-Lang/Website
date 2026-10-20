@@ -44,7 +44,7 @@ def doubler(x: ref i32)
 
 ## Multiple file support
 The previous changes allow me to support multiple files now, since I can just parse multiple files and then let the type checker do the first pass over all files.<br />
-Which means I finally could add the [first file](https://github.com/arminherling/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara) of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start. 
+Which means I finally could add the [first file](https://github.com/Caracal-Lang/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara) of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start. 
 
 ```cara
 // extern_c.cara

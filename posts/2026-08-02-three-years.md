@@ -9,8 +9,8 @@ image_alt: Three-ish years of Caracal
 ## 3-ish year anniversary
 
 The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to [RPG Maker](https://www.rpgmakerweb.com/) or [Godot](https://godotengine.org). The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I'm mostly interested in.<br />
-The project was renamed to Aalenien in [October 2023](https://github.com/arminherling/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069). I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.<br />
-The project was officially renamed to Caracal in [October 2025](https://github.com/arminherling/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85). I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.<br />
+The project was renamed to Aalenien in [October 2023](https://github.com/Caracal-Lang/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069). I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.<br />
+The project was officially renamed to Caracal in [October 2025](https://github.com/Caracal-Lang/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85). I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.<br />
 The project has roughly 600 commits, 1500 tests and sits at around 23k lines of C++ currently, not counting my test and report libraries. 
 
 ## Finished IR layer and codegen rewrite

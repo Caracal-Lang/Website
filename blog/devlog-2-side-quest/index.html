@@ -42,7 +42,7 @@
         <div class="site-actions">
           <a
             class="icon-button github-link"
-            href="https://github.com/arminherling/Caracal"
+            href="https://github.com/Caracal-Lang/Caracal"
             rel="noopener noreferrer"
           >
             <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -83,7 +83,7 @@
       <a href="../../">Home</a>
       <a href="../../docs/">Docs</a>
       <a href="../../blog/">Blog</a>
-      <a href="https://github.com/arminherling/Caracal" rel="noopener noreferrer">Repo</a>
+      <a href="https://github.com/Caracal-Lang/Caracal" rel="noopener noreferrer">Repo</a>
     </div>
     <!-- chrome:end -->
 
@@ -149,7 +149,7 @@ def doubler(x: ref i32)
     x = x * 2;
 }</code></pre>
 <h2 id="multiple-file-support"><a class="heading-link" href="#multiple-file-support">Multiple file support</a> <a class="heading-hash" href="#multiple-file-support" aria-hidden="true" tabindex="-1">#</a></h2>
-<p>The previous changes allow me to support multiple files now, since I can just parse multiple files and then let the type checker do the first pass over all files.<br /> Which means I finally could add the <a href="https://github.com/arminherling/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara">first file</a> of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start.</p>
+<p>The previous changes allow me to support multiple files now, since I can just parse multiple files and then let the type checker do the first pass over all files.<br /> Which means I finally could add the <a href="https://github.com/Caracal-Lang/Caracal/blob/d5370059243506a331ff7fe31663b776273e36d7/Core/extern_c.cara">first file</a> of the core library thanks to this. It currently only contains some extern functions like printf tho but its a start.</p>
 <pre><code class="language-caracal">// extern_c.cara
 #extern()
 def puts(message: string) i32 {}</code></pre>

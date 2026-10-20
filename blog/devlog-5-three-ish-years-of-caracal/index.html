@@ -42,7 +42,7 @@
         <div class="site-actions">
           <a
             class="icon-button github-link"
-            href="https://github.com/arminherling/Caracal"
+            href="https://github.com/Caracal-Lang/Caracal"
             rel="noopener noreferrer"
           >
             <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -83,7 +83,7 @@
       <a href="../../">Home</a>
       <a href="../../docs/">Docs</a>
       <a href="../../blog/">Blog</a>
-      <a href="https://github.com/arminherling/Caracal" rel="noopener noreferrer">Repo</a>
+      <a href="https://github.com/Caracal-Lang/Caracal" rel="noopener noreferrer">Repo</a>
     </div>
     <!-- chrome:end -->
 
@@ -124,7 +124,7 @@
       <p class="post-meta"><time datetime="2026-08-02">2 August 2026</time></p>
       <article class="post-content">
 <h2 id="3-ish-year-anniversary"><a class="heading-link" href="#3-ish-year-anniversary">3-ish year anniversary</a> <a class="heading-hash" href="#3-ish-year-anniversary" aria-hidden="true" tabindex="-1">#</a></h2>
-<p>The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to <a href="https://www.rpgmakerweb.com/">RPG Maker</a> or <a href="https://godotengine.org">Godot</a>. The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I'm mostly interested in.<br /> The project was renamed to Aalenien in <a href="https://github.com/arminherling/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069">October 2023</a>. I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.<br /> The project was officially renamed to Caracal in <a href="https://github.com/arminherling/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85">October 2025</a>. I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.<br /> The project has roughly 600 commits, 1500 tests and sits at around 23k lines of C++ currently, not counting my test and report libraries.</p>
+<p>The project turns three years today. I created the project on the 2nd August in 2023. The goal back then wasnt a compiler but a game creation toolkit with its own scripting language similar to <a href="https://www.rpgmakerweb.com/">RPG Maker</a> or <a href="https://godotengine.org">Godot</a>. The project scope was way too big for someone with limited free time so I had to trim it down quite a bit. I shifted my focus to the language, since thats what I'm mostly interested in.<br /> The project was renamed to Aalenien in <a href="https://github.com/Caracal-Lang/Caracal/commit/bd5f1252367f68b05d1679011a7b5bdef71c2069">October 2023</a>. I tinkered with a few concepts and ended up with a barebone language that transpiled to C++ before I decided to rename the project again.<br /> The project was officially renamed to Caracal in <a href="https://github.com/Caracal-Lang/Caracal/commit/d6083d36cf6c68495e3c1bf96f210efaa60f3f85">October 2025</a>. I guess October is a good time for renames? The name was taken from one of my older compiler projects since I liked the name and because caracals are cool. My target for the language has been native compilation with LLVM since then and I made alot of progress.<br /> The project has roughly 600 commits, 1500 tests and sits at around 23k lines of C++ currently, not counting my test and report libraries.</p>
 <h2 id="finished-ir-layer-and-codegen-rewrite"><a class="heading-link" href="#finished-ir-layer-and-codegen-rewrite">Finished IR layer and codegen rewrite</a> <a class="heading-hash" href="#finished-ir-layer-and-codegen-rewrite" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>I finished splitting the old LLVM codegen into the new IR layer since the last blog post. The new IR layer is similar to the LLVM IR, which made the new codegen straightforward to implement.<br /> One of the main reasons for the rework was my broken codegen for nested control flow, this is fixed now and works. The new IR layer also allowed me to add my own optimization passes after lowering. There is only constant folding and dead code elimination right now but its easily extendable.<br /> The result of the whole rewrite is that ALL of the current tests pass lowering and codegen.</p>
 <p><button type="button" class="image-zoom" data-full="../../assets/test-result-august-2026.png" data-alt="Test Result August 2026"><img src="../../assets/test-result-august-2026.png" alt="Test Result August 2026" width="539" height="201" loading="lazy" /></button></p>
