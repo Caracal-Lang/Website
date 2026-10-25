@@ -37,8 +37,7 @@ Caracal is an imperative, compiled language with a focus on simple and enjoyable
 ```cara
 def main() i32
 {
-    // C.puts is temporary until we got a print function
-    C.puts("Hello, world!");
+    printLine("Hello, world!");
     return 0;
 }
 ```
